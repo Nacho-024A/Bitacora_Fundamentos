@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arrayNumeros = new int[20];
+        ArrayList<Integer> arrayPrimos = new ArrayList<>();
+
+        // Generación de números aleatorios entre 10 y 100 para el primer arreglo
+        Random random = new Random();
+        for (int i = 0; i < arrayNumeros.length; i++) {
+            arrayNumeros[i] = random.nextInt(91) + 10; // Genera números entre 10 y 100
+        }
+
+        // Filtrar números primos del primer arreglo al segundo arreglo
+        for (int num : arrayNumeros) {
+            if (esPrimo(num)) {
+                arrayPrimos.add(num);
+            }
+        }
+
+        // Imprimir primer arreglo
+        System.out.print("Array de números aleatorios: ");
+        for (int num : arrayNumeros) {
+            System.out.print(num + " ");
+        }
+        
+        // Imprimir segundo arreglo (números primos)
+        System.out.print("\nArray de números primos: ");
+        for (int primo : arrayPrimos) {
+            System.out.print(primo + " ");
+        }
+    }
+
+    // Método para comprobar si un número es primo
+    public static boolean esPrimo(int numero) {
+        if (numero <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(numero); i++) { 
+            if (numero % i == 0) return false;
+        }
+        return true;
+    }
+}
